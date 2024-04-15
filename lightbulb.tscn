@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://50p5vt3qy537"]
+
+[ext_resource type="Script" path="res://lightbulb.cs" id="1_dsq8q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv3lx"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o5t8o"]
+material = SubResource("StandardMaterial3D_dv3lx")
+
+[node name="Lightbulb" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_o5t8o")
+script = ExtResource("1_dsq8q")

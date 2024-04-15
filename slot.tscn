@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbui4wo3riu12"]
+
+[ext_resource type="Script" path="res://slot.cs" id="1_tb011"]
+[ext_resource type="PackedScene" uid="uid://50p5vt3qy537" path="res://lightbulb.tscn" id="1_tcrx3"]
+
+[node name="Slot" type="Node3D"]
+script = ExtResource("1_tb011")
+
+[node name="Lightbulb" parent="." instance=ExtResource("1_tcrx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
+
+[node name="Lightbulb2" parent="." instance=ExtResource("1_tcrx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+
+[node name="Lightbulb3" parent="." instance=ExtResource("1_tcrx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+skeleton = NodePath("../Lightbulb2")
