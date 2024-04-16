@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct6ab6c4csc6n"]
+
+[ext_resource type="PackedScene" uid="uid://cc5ialcqjq3w5" path="res://board.tscn" id="1_skl7r"]
+
+[sub_resource type="Environment" id="Environment_bcvkj"]
+background_mode = 3
+ambient_light_source = 1
+reflected_light_source = 1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_84tpp"]
+
+[node name="Main" type="Node"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 13, 10)
+
+[node name="Board" parent="." instance=ExtResource("1_skl7r")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 9, 0)
+light_color = Color(1, 1, 0.658824, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bcvkj")
+camera_attributes = SubResource("CameraAttributesPractical_84tpp")

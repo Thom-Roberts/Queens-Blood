@@ -3,7 +3,7 @@ using System;
 
 public partial class slot : Node3D
 {
-  public int lightbulbCount = 0;
+  public int lightbulbCount = 1;
   public int currentModifier = 0;
   private lightbulb[] lightbulbs = new lightbulb[3];
 
@@ -12,6 +12,7 @@ public partial class slot : Node3D
     lightbulbs[0] = GetNode<lightbulb>("Lightbulb");
     lightbulbs[1] = GetNode<lightbulb>("Lightbulb2");
     lightbulbs[2] = GetNode<lightbulb>("Lightbulb3");
+    SetLightbulbCount(lightbulbCount);
   }
 
   public void SetLightbulbCount(int count)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc5ialcqjq3w5"]
+[gd_scene load_steps=5 format=3 uid="uid://cc5ialcqjq3w5"]
 
+[ext_resource type="Script" path="res://board.cs" id="1_3acah"]
 [ext_resource type="PackedScene" uid="uid://dbui4wo3riu12" path="res://slot.tscn" id="1_6geh5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3w3ot"]
@@ -11,10 +12,11 @@ material = SubResource("StandardMaterial3D_3w3ot")
 add_uv2 = true
 
 [node name="Board" type="Node3D"]
+script = ExtResource("1_3acah")
 
 [node name="Slots" type="Node" parent="."]
 
-[node name="Slot" parent="Slots" instance=ExtResource("1_6geh5")]
+[node name="Slot1" parent="Slots" instance=ExtResource("1_6geh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
 
 [node name="Slot2" parent="Slots" instance=ExtResource("1_6geh5")]
@@ -98,4 +100,8 @@ mesh = SubResource("PlaneMesh_sptf3")
 
 [node name="LongWall4" type="MeshInstance3D" parent="Dividers"]
 transform = Transform3D(-2.35281e-15, 4.37114e-08, -10, 1, 7.54979e-08, 9.47312e-15, 7.54979e-08, -1, -4.37114e-07, 0, 0, 6)
+mesh = SubResource("PlaneMesh_sptf3")
+
+[node name="LongWall5" type="MeshInstance3D" parent="Dividers"]
+transform = Transform3D(-2.62268e-07, 4.37114e-08, -10, -7.15256e-07, 1, 4.37114e-07, 6, 1.19209e-07, -4.37114e-07, 0, -1, 0)
 mesh = SubResource("PlaneMesh_sptf3")

@@ -9,8 +9,6 @@ public partial class lightbulb : MeshInstance3D
   public BaseMaterial3D GreenMaterial {get; set;}
   public override void _Ready() 
   {
-    GD.Print("Hello, World!");
-
     this.Mesh.SurfaceSetMaterial(0, RedMaterial);
   }
 
