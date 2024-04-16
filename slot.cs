@@ -48,4 +48,12 @@ public partial class slot : Node3D
   {
     currentModifier = modifier;
   }
+
+  public void SetColor(bool isPlayer)
+  {
+    foreach(lightbulb lightbulb in lightbulbs)
+    {
+      lightbulb.SetMaterial(isPlayer);
+    } 
+  }
 }
