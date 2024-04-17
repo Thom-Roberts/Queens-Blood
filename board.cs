@@ -39,45 +39,51 @@ public partial class board : Node3D
     int newSlot = selectedSlot;
     if(@event.IsActionPressed("move_down"))
     {
-      if(selectedSlot > 10)
+      GD.Print("Down pressed");
+      if(selectedSlot >= 10)
       {
         return;
       }
       newSlot += 5;
-      GD.Print("Selected slot: " + selectedSlot);
+      GD.Print("Selected slot: " + newSlot);
     }
-    else if(@event.IsActionPressed("move_up"))
+    if(@event.IsActionPressed("move_up"))
     {
+      GD.Print("Up pressed");
       if(selectedSlot < 5)
       {
         return;
       }
       newSlot -= 5;
-      GD.Print("Selected slot: " + selectedSlot);
+      GD.Print("Selected slot: " + newSlot);
     }
-    else if(@event.IsActionPressed("move_left"))
+    if(@event.IsActionPressed("move_left"))
     {
+      
+      GD.Print("Left pressed");
       if(selectedSlot % 5 == 0)
       {
         return;
       }
       newSlot -= 1;
-      GD.Print("Selected slot: " + selectedSlot);
+      GD.Print("Selected slot: " + newSlot);
     }
-    else if(@event.IsActionPressed("move_right"))
+    if(@event.IsActionPressed("move_right"))
     {
+      
+      GD.Print("Right pressed");
       if(selectedSlot % 5 == 4)
       {
         return;
       }
       newSlot += 1;
-      GD.Print("Selected slot: " + selectedSlot);
+      GD.Print("Selected slot: " + newSlot);
     }
     // We are updating
     if(newSlot != selectedSlot)
     {
-      slots[selectedSlot].SetColor(true);
-      slots[newSlot].SetColor(false);
+      slots[selectedSlot].SetColor(false);
+      slots[newSlot].SetColor(true);
       selectedSlot = newSlot;
     }
   }

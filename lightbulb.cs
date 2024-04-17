@@ -14,12 +14,9 @@ public partial class lightbulb : MeshInstance3D
 
   public void SetMaterial(bool isPlayer)
   {
-    GD.Print("Setting material");
     if(isPlayer)
       this.MaterialOverride = GreenMaterial;
-      // this.Mesh.SurfaceSetMaterial(0, GreenMaterial);
     else
       this.MaterialOverride = RedMaterial;
-      // this.Mesh.SurfaceSetMaterial(0, RedMaterial);
   }
 }
