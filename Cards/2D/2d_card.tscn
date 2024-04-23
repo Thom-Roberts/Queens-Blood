@@ -19,7 +19,7 @@ offset_top = 300.0
 offset_right = 100.0
 offset_bottom = 300.0
 
-[node name="CardValue" type="Label" parent="."]
+[node name="PointLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 308.0
 offset_top = 144.0
