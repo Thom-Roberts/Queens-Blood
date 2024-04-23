@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://khxhatxbtb5e"]
+
+[ext_resource type="PackedScene" uid="uid://8nadq5tfi6ph" path="res://Cards/2D/Squares.tscn" id="1_e1riq"]
+[ext_resource type="Script" path="res://Cards/2D/TwoDCard.cs" id="1_ubwr4"]
+[ext_resource type="Texture2D" uid="uid://d0aurcmsthecb" path="res://Assets/Images/pawn.png" id="2_ls20b"]
+
+[node name="2DCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ubwr4")
+
+[node name="Squares" parent="." instance=ExtResource("1_e1riq")]
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 100.0
+offset_bottom = 300.0
+
+[node name="CardValue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 144.0
+offset_right = 348.0
+offset_bottom = 213.0
+theme_override_font_sizes/font_size = 50
+text = "1"
+
+[node name="Pawns" type="Node" parent="."]
+
+[node name="Pawn1" type="TextureRect" parent="Pawns"]
+offset_top = 145.0
+offset_right = 474.0
+offset_bottom = 784.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ls20b")
+
+[node name="Pawn2" type="TextureRect" parent="Pawns"]
+offset_left = 50.0
+offset_top = 145.0
+offset_right = 524.0
+offset_bottom = 784.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ls20b")
+
+[node name="Pawn3" type="TextureRect" parent="Pawns"]
+offset_left = 100.0
+offset_top = 145.0
+offset_right = 574.0
+offset_bottom = 784.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ls20b")
