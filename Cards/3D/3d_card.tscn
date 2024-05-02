@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://tgls1hnusfwc"]
+
+[ext_resource type="PackedScene" uid="uid://dimlpesjj3qty" path="res://Cards/3D/3d_squares.tscn" id="1_6fmha"]
+
+[node name="3DCard" type="Node3D"]
+
+[node name="CardArt" type="Sprite3D" parent="."]
+
+[node name="3DSquares" parent="." instance=ExtResource("1_6fmha")]
