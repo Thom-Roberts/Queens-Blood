@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dimlpesjj3qty"]
+[gd_scene load_steps=6 format=3 uid="uid://dimlpesjj3qty"]
 
 [ext_resource type="Script" path="res://Cards/3D/ThreeDSquares.cs" id="1_cgcgu"]
+[ext_resource type="Material" uid="uid://qdio3swy2fuc" path="res://Materials/white.tres" id="2_xtfty"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4osh"]
 transparency = 1
@@ -10,6 +11,7 @@ albedo_color = Color(0, 0, 0, 0.823529)
 material = SubResource("StandardMaterial3D_o4osh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ye2hq"]
+material = ExtResource("2_xtfty")
 size = Vector2(0.5, 0.5)
 
 [node name="3DSquares" type="Node3D"]
