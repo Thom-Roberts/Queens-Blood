@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://hmx0m1q4q1xg"]
+
+[ext_resource type="PackedScene" uid="uid://tgls1hnusfwc" path="res://Cards/3D/3d_card.tscn" id="1_iv0ox"]
+[ext_resource type="Resource" uid="uid://cg3op2bcb0666" path="res://Cards/Data/Security_Officer.res" id="2_w5s71"]
+
+[node name="SecurityOfficer" type="Node3D"]
+
+[node name="3DCard" parent="." instance=ExtResource("1_iv0ox")]
+cardData = ExtResource("2_w5s71")

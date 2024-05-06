@@ -38,6 +38,8 @@ public partial class CardData : Resource
   public CardEffect Effect {get; set;}
   [Export]
   public int[] SpecialEffectTiles {get; set;}
+  [Export]
+  public CompressedTexture2D CardArt {get; set;}
 
   // Make sure you provide a parameterless constructor.
   // In C#, a parameterless constructor is different from a
