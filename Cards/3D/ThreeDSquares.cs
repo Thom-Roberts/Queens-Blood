@@ -5,6 +5,8 @@ public partial class ThreeDSquares : Node3D
 {
   [Export]
   public Color affectedColor = new Color(0.765f, 0.725f, 0.388f); 
+  [Export]
+  private StandardMaterial3D centerMaterial;
 
   private MeshInstance3D[] tiles = new MeshInstance3D[25];
 
@@ -12,8 +14,9 @@ public partial class ThreeDSquares : Node3D
   {
     for (int i = 1; i <= 25; i++)
     {
-      tiles[i] = GetNode<MeshInstance3D>("Square" + i.ToString());
+      tiles[i - 1] = GetNode<MeshInstance3D>("Square" + i.ToString());
     }
+    tiles[12].MaterialOverride = centerMaterial;
   }
 
   public void ColorTiles(int[] tilesToColor)

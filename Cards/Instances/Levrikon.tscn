@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cux6q3mysu5s4"]
+
+[ext_resource type="PackedScene" uid="uid://tgls1hnusfwc" path="res://Cards/3D/3d_card.tscn" id="1_8amek"]
+[ext_resource type="Resource" uid="uid://bk3r85wv6j8i6" path="res://Cards/Data/Levrikon.res" id="2_ema83"]
+
+[node name="Levrikon" type="Node3D"]
+
+[node name="3DCard" parent="." instance=ExtResource("1_8amek")]
+cardData = ExtResource("2_ema83")

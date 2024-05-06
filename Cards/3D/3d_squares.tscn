@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dimlpesjj3qty"]
+[gd_scene load_steps=7 format=3 uid="uid://dimlpesjj3qty"]
 
 [ext_resource type="Script" path="res://Cards/3D/ThreeDSquares.cs" id="1_cgcgu"]
-[ext_resource type="Material" uid="uid://qdio3swy2fuc" path="res://Materials/white.tres" id="2_xtfty"]
+[ext_resource type="Material" uid="uid://b1w7ml4lukvhd" path="res://Materials/white.tres" id="2_xtfty"]
+[ext_resource type="Material" uid="uid://qdio3swy2fuc" path="res://Materials/unlit_gray.tres" id="3_kug03"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4osh"]
 transparency = 1
@@ -11,11 +12,12 @@ albedo_color = Color(0, 0, 0, 0.823529)
 material = SubResource("StandardMaterial3D_o4osh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ye2hq"]
-material = ExtResource("2_xtfty")
+material = ExtResource("3_kug03")
 size = Vector2(0.5, 0.5)
 
 [node name="3DSquares" type="Node3D"]
 script = ExtResource("1_cgcgu")
+centerMaterial = ExtResource("2_xtfty")
 
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.3, 0, 0, 0, 1, 0, 0, 0, 2.3, 0, -0.05, 0)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd5cwf5i0uovv"]
+
+[ext_resource type="PackedScene" uid="uid://tgls1hnusfwc" path="res://Cards/3D/3d_card.tscn" id="1_8od18"]
+[ext_resource type="Resource" uid="uid://brbti3ee576nh" path="res://Cards/Data/Elphadunk.res" id="2_iuryi"]
+
+[node name="Elphadunk" type="Node3D"]
+
+[node name="3DCard" parent="." instance=ExtResource("1_8od18")]
+cardData = ExtResource("2_iuryi")
