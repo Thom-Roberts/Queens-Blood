@@ -22,6 +22,8 @@ public partial class ThreeDCard : Node3D
 
     pointLabel = GetNode<Label3D>("PointLabel");
     cardArt = GetNode<Sprite3D>("CardArt");
+
+    SetInitialCardProperties();
   }
 
   private void SetInitialCardProperties()

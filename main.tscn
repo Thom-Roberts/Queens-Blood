@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct6ab6c4csc6n"]
+[gd_scene load_steps=6 format=3 uid="uid://ct6ab6c4csc6n"]
 
 [ext_resource type="PackedScene" uid="uid://cc5ialcqjq3w5" path="res://board.tscn" id="1_skl7r"]
+[ext_resource type="PackedScene" uid="uid://cu4iomdjklti" path="res://Cards/Instances/JUnitSweeper.tscn" id="2_4h173"]
 [ext_resource type="PackedScene" uid="uid://hmx0m1q4q1xg" path="res://Cards/Instances/SecurityOfficer.tscn" id="2_cs0ix"]
 
 [sub_resource type="Environment" id="Environment_bcvkj"]
@@ -26,7 +27,10 @@ environment = SubResource("Environment_bcvkj")
 camera_attributes = SubResource("CameraAttributesPractical_84tpp")
 
 [node name="SecurityOfficer" parent="." instance=ExtResource("2_cs0ix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -1, 4, 0)
+
+[node name="JUnitSweeper" parent="." instance=ExtResource("2_4h173")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 3, 4, 0)
 
 [editable path="Board"]
 [editable path="Board/Slots/Slot1"]
