@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0aurcmsthecb"
-path.s3tc="res://.godot/imported/pawn.png-89e572a7f0bf787db9f103a124129b34.s3tc.ctex"
+uid="uid://c7ma0r73q362h"
+path.s3tc="res://.godot/imported/SecurityOfficer.png-d501a12093ee90f0d9c7c7c7447b02c5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Images/pawn.png"
-dest_files=["res://.godot/imported/pawn.png-89e572a7f0bf787db9f103a124129b34.s3tc.ctex"]
+source_file="res://Assets/Images/CardArt/SecurityOfficer.png"
+dest_files=["res://.godot/imported/SecurityOfficer.png-d501a12093ee90f0d9c7c7c7447b02c5.s3tc.ctex"]
 
 [params]
 

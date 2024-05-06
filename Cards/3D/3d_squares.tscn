@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dimlpesjj3qty"]
+[gd_scene load_steps=5 format=3 uid="uid://dimlpesjj3qty"]
 
 [ext_resource type="Script" path="res://Cards/3D/ThreeDSquares.cs" id="1_cgcgu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4osh"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.823529)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y6lra"]
+material = SubResource("StandardMaterial3D_o4osh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ye2hq"]
 size = Vector2(0.5, 0.5)
 
 [node name="3DSquares" type="Node3D"]
 script = ExtResource("1_cgcgu")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.3, 0, 0, 0, 1, 0, 0, 0, 2.3, 0, -0.05, 0)
+mesh = SubResource("PlaneMesh_y6lra")
 
 [node name="Square1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
