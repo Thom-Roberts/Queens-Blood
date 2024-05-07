@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://oq3lm7vk27m"]
-
-[ext_resource type="PackedScene" uid="uid://tgls1hnusfwc" path="res://Cards/3D/3d_card.tscn" id="1_mr5sn"]
-[ext_resource type="Resource" uid="uid://dklhnt1yylbm4" path="res://Cards/Data/Grasslands_Wolf.res" id="2_ekbni"]
-
-[node name="GrasslandsWolf" type="Node3D"]
-
-[node name="3DCard" parent="." instance=ExtResource("1_mr5sn")]
-cardData = ExtResource("2_ekbni")

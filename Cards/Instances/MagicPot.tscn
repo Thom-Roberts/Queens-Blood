@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://g70n8tvo7eaq"]
-
-[ext_resource type="PackedScene" uid="uid://tgls1hnusfwc" path="res://Cards/3D/3d_card.tscn" id="1_xd7pj"]
-[ext_resource type="Resource" uid="uid://bt127yc1cu124" path="res://Cards/Data/Magic_Pot.res" id="2_6ysrb"]
-
-[node name="Magicpot" type="Node3D"]
-
-[node name="3DCard" parent="." instance=ExtResource("1_xd7pj")]
-cardData = ExtResource("2_6ysrb")

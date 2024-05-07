@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu4iomdjklti"]
-
-[ext_resource type="PackedScene" uid="uid://tgls1hnusfwc" path="res://Cards/3D/3d_card.tscn" id="1_ucybr"]
-[ext_resource type="Resource" uid="uid://d2ev3oyh4nyih" path="res://Cards/Data/J_Unit_Sweeper.res" id="2_7mxmh"]
-
-[node name="JUnitSweeper" type="Node3D"]
-
-[node name="3DCard" parent="." instance=ExtResource("1_ucybr")]
-cardData = ExtResource("2_7mxmh")
