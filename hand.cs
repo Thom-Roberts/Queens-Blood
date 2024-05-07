@@ -36,11 +36,10 @@ public partial class hand : Node3D
 
   public void AddCard(ThreeDCard card)
   {
-    GD.Print("Adding card to hand");
-    cards.Add(card);
     AddChild(card);
     // Move card to some offset based on its index
-    card.Position = new Vector3(0, 0, 0);
+    card.Position = new Vector3(cards.Count * 3, 0, 0);
+    cards.Add(card);
   }
 
   private void SetActiveCard(int index)

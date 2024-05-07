@@ -24,6 +24,10 @@ public partial class main : Node
     securityOfficerCard.cardData = GD.Load<CardData>(CardList.cardLookup[CardType.Security_Officer]);
     
     playerHand.AddCard(securityOfficerCard);
+
+    var jUnitSweeperCard = cardScene.Instantiate<ThreeDCard>();
+    jUnitSweeperCard.cardData = GD.Load<CardData>(CardList.cardLookup[CardType.J_Unit_Sweeper]);
+    playerHand.AddCard(jUnitSweeperCard);
     // for(int i = 0; i < 15; i++)
     // {
     //   ThreeDCard card = (ThreeDCard)cardScene.NativeInstance();
