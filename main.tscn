@@ -1,14 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ct6ab6c4csc6n"]
+[gd_scene load_steps=6 format=3 uid="uid://ct6ab6c4csc6n"]
 
+[ext_resource type="Script" path="res://main.cs" id="1_bi7vj"]
 [ext_resource type="PackedScene" uid="uid://cc5ialcqjq3w5" path="res://board.tscn" id="1_skl7r"]
-[ext_resource type="PackedScene" uid="uid://cu4iomdjklti" path="res://Cards/Instances/JUnitSweeper.tscn" id="2_4h173"]
-[ext_resource type="PackedScene" uid="uid://hmx0m1q4q1xg" path="res://Cards/Instances/SecurityOfficer.tscn" id="2_cs0ix"]
-[ext_resource type="PackedScene" uid="uid://bd5cwf5i0uovv" path="res://Cards/Instances/Elphadunk.tscn" id="4_y1dsa"]
-[ext_resource type="PackedScene" uid="uid://oq3lm7vk27m" path="res://Cards/Instances/GrasslandsWolf.tscn" id="5_d8w0n"]
-[ext_resource type="PackedScene" uid="uid://cux6q3mysu5s4" path="res://Cards/Instances/Levrikon.tscn" id="6_njkul"]
-[ext_resource type="PackedScene" uid="uid://g70n8tvo7eaq" path="res://Cards/Instances/MagicPot.tscn" id="7_v2mky"]
-[ext_resource type="PackedScene" uid="uid://bplv4vgb32ia6" path="res://Cards/Instances/Mu.tscn" id="8_ofrxg"]
-[ext_resource type="PackedScene" uid="uid://cb3hd71xn58gf" path="res://Cards/Instances/QueenBee.tscn" id="9_movyt"]
+[ext_resource type="PackedScene" uid="uid://4p2s5kxj0r22" path="res://hand.tscn" id="10_wqwu2"]
 
 [sub_resource type="Environment" id="Environment_bcvkj"]
 background_mode = 3
@@ -18,9 +12,13 @@ reflected_light_source = 1
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_84tpp"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_bi7vj")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 13, 10)
+
+[node name="Hand" parent="." instance=ExtResource("10_wqwu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 8)
 
 [node name="Board" parent="." instance=ExtResource("1_skl7r")]
 
@@ -31,30 +29,6 @@ light_color = Color(1, 1, 0.658824, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bcvkj")
 camera_attributes = SubResource("CameraAttributesPractical_84tpp")
-
-[node name="SecurityOfficer" parent="." instance=ExtResource("2_cs0ix")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -7, 4, -4)
-
-[node name="JUnitSweeper" parent="." instance=ExtResource("2_4h173")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -3, 4, -4)
-
-[node name="Elphadunk" parent="." instance=ExtResource("4_y1dsa")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 8, 4, -4)
-
-[node name="GrasslandsWolf" parent="." instance=ExtResource("5_d8w0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 1)
-
-[node name="Levrikon" parent="." instance=ExtResource("6_njkul")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 4, 4, -4)
-
-[node name="Magicpot" parent="." instance=ExtResource("7_v2mky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 1)
-
-[node name="Mu" parent="." instance=ExtResource("8_ofrxg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 1)
-
-[node name="QueenBee" parent="." instance=ExtResource("9_movyt")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 4, -4)
 
 [editable path="Board"]
 [editable path="Board/Slots/Slot1"]

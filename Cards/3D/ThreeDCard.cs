@@ -4,7 +4,7 @@ using System;
 public partial class ThreeDCard : Node3D
 {
   [Export]
-  private CardData cardData {get; set;}
+  public CardData cardData { get; set; }
 
   private ThreeDSquares squares;
   private Label3D cardNameLabel;
@@ -22,9 +22,9 @@ public partial class ThreeDCard : Node3D
 
     pointLabel = GetNode<Label3D>("PointLabel");
     cardArt = GetNode<Sprite3D>("CardArt");
-
     SetInitialCardProperties();
   }
+  
 
   private void SetInitialCardProperties()
   {
@@ -33,7 +33,6 @@ public partial class ThreeDCard : Node3D
       GD.PrintErr("CardData is null");
       return;
     }
-
     squares.ColorTiles(cardData.CostIncreaseTiles);
     cardNameLabel.Text = cardData.CardName;
     SetAmountOfPawns(cardData.CardCost);
