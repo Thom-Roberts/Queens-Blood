@@ -6,7 +6,7 @@ public partial class hand : Node3D
   [Export]
   public Array<ThreeDCard> cards = new Array<ThreeDCard>();
 
-  private bool AcceptingInput = false;
+  private bool AcceptingInput = true;
   private int ActiveCard = 0; // The raised card
 
   public override void _Input(InputEvent @event)
@@ -16,11 +16,11 @@ public partial class hand : Node3D
 
     if(@event.IsActionPressed("move_left"))
     {
-      SetActiveCard(ActiveCard - 1);
+      SetActiveCard(ActiveCard + cards.Count - 1);
     }
     else if(@event.IsActionPressed("move_right"))
     {
-      SetActiveCard(ActiveCard + 1);
+      SetActiveCard(ActiveCard + cards.Count + 1);
     }
     else if(@event.IsActionPressed("select"))
     {
@@ -47,9 +47,9 @@ public partial class hand : Node3D
     int nextIndex = index % cards.Count;
 
     // Lower the old card
-    cards[ActiveCard].Position = new Vector3(0, 0, 0);
+    cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y, cards[ActiveCard].Position.Z - 1f);
     ActiveCard = nextIndex;
     // Raise the new card
-    cards[ActiveCard].Position = new Vector3(0, 0, 0.5f);
+    cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y, cards[ActiveCard].Position.Z + 1f);
   }
 }
