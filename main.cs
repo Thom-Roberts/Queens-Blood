@@ -1,11 +1,11 @@
 using Godot;
 using Godot.Collections;
-using System;
 
 public partial class main : Node
 {
   public Array<ThreeDCard> deckCards = new Array<ThreeDCard>();
   private hand playerHand;
+  private board gameBoard;
 
   public override void _Ready()
   {
@@ -13,7 +13,10 @@ public partial class main : Node
     // Initialization here
     // Load the deck
     playerHand = GetNode<hand>("Hand");
+    gameBoard = GetNode<board>("Board");
     LoadDeck();
+    playerHand.CardSelected += HandleCardSelection;
+    gameBoard.SlotSelected += HandleSlotSelection;
   }
 
   private void LoadDeck()
@@ -36,5 +39,15 @@ public partial class main : Node
     //   AddChild(card);
     //   card.Position = new Vector3(0, 0, 0);
     // }
+  }
+
+  private void HandleCardSelection(ThreeDCard card)
+  {
+    GD.Print("Card selected: " + card.cardData.CardName);
+  }
+
+  private void HandleSlotSelection()
+  {
+    GD.Print("Slot selected");
   }
 }

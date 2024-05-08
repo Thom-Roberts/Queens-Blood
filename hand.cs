@@ -3,6 +3,9 @@ using Godot.Collections;
 
 public partial class hand : Node3D
 {
+  [Signal]
+  public delegate void CardSelectedEventHandler(ThreeDCard card);
+
   [Export]
   public Array<ThreeDCard> cards = new Array<ThreeDCard>();
 
@@ -26,6 +29,7 @@ public partial class hand : Node3D
     {
       // Trigger select on card, board now handles the input
       AcceptingInput = false;
+      EmitSignal(SignalName.CardSelected, cards[ActiveCard]);
     }
   }
 

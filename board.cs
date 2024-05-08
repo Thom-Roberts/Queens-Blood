@@ -3,8 +3,10 @@ using System;
 
 public partial class board : Node3D
 {
+  [Signal]
+  public delegate void SlotSelectedEventHandler();
   public slot[] slots = new slot[15];
-
+  private bool AcceptingInput = false;
   private int currentSlot = 0;
   // Temporary for proof of concept
   private int selectedSlot = 0;
@@ -18,20 +20,22 @@ public partial class board : Node3D
 
   public override void _Input(InputEvent @event)
   {
+    if(!AcceptingInput)
+      return;
+
+    MoveCursor(@event);
+
     if(@event.IsActionPressed("ui_select"))
     {
       GD.Print("Slot " + currentSlot + " has " + slots[currentSlot].lightbulbCount + " lightbulbs");
-      slots[currentSlot].SetLightbulbCount((slots[currentSlot].lightbulbCount + 1) % 4);
-      currentSlot = (currentSlot + 1) % 15;
+      EmitSignal(SignalName.SlotSelected);
     }
     else if(@event.IsActionPressed("select"))
     {
       GD.Print("Slot " + currentSlot + " has " + slots[currentSlot].lightbulbCount + " lightbulbs");
-      slots[currentSlot].SetLightbulbCount((slots[currentSlot].lightbulbCount + 1) % 4);
-      currentSlot = (currentSlot + 1) % 15;
+      EmitSignal(SignalName.SlotSelected);
     }
 
-    MoveCursor(@event);
   }
 
   private void MoveCursor(InputEvent @event)
@@ -86,5 +90,9 @@ public partial class board : Node3D
       slots[newSlot].SetColor(true);
       selectedSlot = newSlot;
     }
+  }
+  public void SetAcceptingInput(bool acceptingInput)
+  {
+    AcceptingInput = acceptingInput;
   }
 }
