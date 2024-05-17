@@ -4,7 +4,7 @@ using System;
 public partial class board : Node3D
 {
   [Signal]
-  public delegate void SlotSelectedEventHandler();
+  public delegate void SlotSelectedEventHandler(slot slot);
   public slot[] slots = new slot[15];
   private bool AcceptingInput = false;
   private int currentSlot = 0;
@@ -27,13 +27,11 @@ public partial class board : Node3D
 
     if(@event.IsActionPressed("ui_select"))
     {
-      GD.Print("Slot " + currentSlot + " has " + slots[currentSlot].lightbulbCount + " lightbulbs");
-      EmitSignal(SignalName.SlotSelected);
+      EmitSignal(SignalName.SlotSelected, slots[currentSlot]);
     }
     else if(@event.IsActionPressed("select"))
     {
-      GD.Print("Slot " + currentSlot + " has " + slots[currentSlot].lightbulbCount + " lightbulbs");
-      EmitSignal(SignalName.SlotSelected);
+      EmitSignal(SignalName.SlotSelected, slots[currentSlot]);
     }
 
   }
@@ -43,49 +41,40 @@ public partial class board : Node3D
     int newSlot = selectedSlot;
     if(@event.IsActionPressed("move_down"))
     {
-      GD.Print("Down pressed");
       if(selectedSlot >= 10)
       {
         return;
       }
       newSlot += 5;
-      GD.Print("Selected slot: " + newSlot);
     }
     if(@event.IsActionPressed("move_up"))
     {
-      GD.Print("Up pressed");
       if(selectedSlot < 5)
       {
         return;
       }
       newSlot -= 5;
-      GD.Print("Selected slot: " + newSlot);
     }
     if(@event.IsActionPressed("move_left"))
     {
-      
-      GD.Print("Left pressed");
       if(selectedSlot % 5 == 0)
       {
         return;
       }
       newSlot -= 1;
-      GD.Print("Selected slot: " + newSlot);
     }
     if(@event.IsActionPressed("move_right"))
     {
-      
-      GD.Print("Right pressed");
       if(selectedSlot % 5 == 4)
       {
         return;
       }
       newSlot += 1;
-      GD.Print("Selected slot: " + newSlot);
     }
     // We are updating
     if(newSlot != selectedSlot)
     {
+      GD.Print("Selected slot: " + newSlot);
       slots[selectedSlot].SetColor(false);
       slots[newSlot].SetColor(true);
       selectedSlot = newSlot;

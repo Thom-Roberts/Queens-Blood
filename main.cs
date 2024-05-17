@@ -6,6 +6,7 @@ public partial class main : Node
   public Array<ThreeDCard> deckCards = new Array<ThreeDCard>();
   private hand playerHand;
   private board gameBoard;
+  private ThreeDCard selectedCard;
 
   public override void _Ready()
   {
@@ -44,10 +45,14 @@ public partial class main : Node
   private void HandleCardSelection(ThreeDCard card)
   {
     GD.Print("Card selected: " + card.cardData.CardName);
+    selectedCard = card;
+    playerHand.SetAcceptingInput(false);
+    gameBoard.SetAcceptingInput(true);
   }
 
-  private void HandleSlotSelection()
+  private void HandleSlotSelection(slot slot)
   {
     GD.Print("Slot selected");
+    selectedCard.GlobalPosition = slot.GetCardPosition();
   }
 }

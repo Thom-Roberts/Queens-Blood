@@ -27,8 +27,7 @@ public partial class hand : Node3D
     }
     else if(@event.IsActionPressed("select"))
     {
-      // Trigger select on card, board now handles the input
-      AcceptingInput = false;
+      // Trigger select on card, board should now handles the input
       EmitSignal(SignalName.CardSelected, cards[ActiveCard]);
     }
   }
