@@ -32,6 +32,8 @@ public partial class main : Node
     var jUnitSweeperCard = cardScene.Instantiate<ThreeDCard>();
     jUnitSweeperCard.cardData = GD.Load<CardData>(CardList.cardLookup[CardType.J_Unit_Sweeper]);
     playerHand.AddCard(jUnitSweeperCard);
+
+    playerHand.SetActiveCard(0);
     // for(int i = 0; i < 15; i++)
     // {
     //   ThreeDCard card = (ThreeDCard)cardScene.NativeInstance();

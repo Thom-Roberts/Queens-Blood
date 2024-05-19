@@ -10,7 +10,7 @@ public partial class hand : Node3D
   public Array<ThreeDCard> cards = new Array<ThreeDCard>();
 
   private bool AcceptingInput = true;
-  private int ActiveCard = 0; // The raised card
+  private int ActiveCard = -1; // The raised card
 
   public override void _Input(InputEvent @event)
   {
@@ -45,14 +45,17 @@ public partial class hand : Node3D
     cards.Add(card);
   }
 
-  private void SetActiveCard(int index)
+  public void SetActiveCard(int index)
   {
     int nextIndex = index % cards.Count;
 
-    // Lower the old card
-    cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y, cards[ActiveCard].Position.Z - 1f);
+    // Lower the old card, except if we're just starting
+    if(ActiveCard != -1)
+    {
+      cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y - 1f, cards[ActiveCard].Position.Z + 1f);
+    }
     ActiveCard = nextIndex;
     // Raise the new card
-    cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y, cards[ActiveCard].Position.Z + 1f);
+    cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y + 1f, cards[ActiveCard].Position.Z - 1f);
   }
 }
