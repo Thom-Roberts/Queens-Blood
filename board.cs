@@ -7,8 +7,6 @@ public partial class board : Node3D
   public delegate void SlotSelectedEventHandler(slot slot);
   public slot[] slots = new slot[15];
   private bool AcceptingInput = false;
-  private int currentSlot = 0;
-  // Temporary for proof of concept
   private int selectedSlot = 0;
   public override void _Ready()
   {
@@ -27,11 +25,11 @@ public partial class board : Node3D
 
     if(@event.IsActionPressed("ui_select"))
     {
-      EmitSignal(SignalName.SlotSelected, slots[currentSlot]);
+      EmitSignal(SignalName.SlotSelected, slots[selectedSlot]);
     }
     else if(@event.IsActionPressed("select"))
     {
-      EmitSignal(SignalName.SlotSelected, slots[currentSlot]);
+      EmitSignal(SignalName.SlotSelected, slots[selectedSlot]);
     }
 
   }
