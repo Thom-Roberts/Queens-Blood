@@ -48,11 +48,13 @@ public partial class main : Node
   private void HandleSlotSelection(slot slot, int slotIndex)
   {
     GD.Print("Slot selected");
-    if(slot.lightbulbCount > selectedCard.cardData.CardCost || slot.occupied)
+    if(selectedCard.cardData.CardCost > slot.lightbulbCount || slot.occupied)
     {
       GD.Print("Unable to play card in this slot. Not enough lightbulbs.");
       return;
     }
+
+    GD.Print(slot.lightbulbCount + " < " + selectedCard.cardData.CardCost);
     
     GD.Print("Attempting to place card");
     selectedCard.GlobalPosition = slot.GetCardPosition();

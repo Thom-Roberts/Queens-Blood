@@ -9,7 +9,7 @@ public partial class hand : Node3D
   [Export]
   public Array<ThreeDCard> cards = new Array<ThreeDCard>();
 
-  private bool AcceptingInput = true;
+  public bool AcceptingInput = true;
   private int ActiveCard = -1; // The raised card
 
   public override void _Ready()
@@ -20,20 +20,22 @@ public partial class hand : Node3D
       GD.Print("InputManager not found. This is a bug.");
       return;
     }
-    inputManager.Register("ui_select", OnSelect);
+    // inputManager.Register("ui_select", OnSelect);
     inputManager.Register("select", OnSelect);
+    inputManager.Register("move_left", () => HandleDirectionChange("left"));
+    inputManager.Register("move_right", () => HandleDirectionChange("right"));
   }
 
-  public override void _Input(InputEvent @event)
+  public void HandleDirectionChange(string direction)
   {
     if(!AcceptingInput)
       return;
 
-    if(@event.IsActionPressed("move_left"))
+    if(direction == "left")
     {
       SetActiveCard(ActiveCard + cards.Count - 1);
     }
-    else if(@event.IsActionPressed("move_right"))
+    else if(direction == "right")
     {
       SetActiveCard(ActiveCard + cards.Count + 1);
     }
@@ -50,7 +52,14 @@ public partial class hand : Node3D
 
   public void SetAcceptingInput(bool acceptingInput)
   {
-    AcceptingInput = acceptingInput;
+    if(acceptingInput == true) // Prevent race condition
+    {
+      SetDeferred("AcceptingInput", true);
+    }
+    else
+    {
+      AcceptingInput = acceptingInput;
+    }
   }
 
   public void AddCard(ThreeDCard card)

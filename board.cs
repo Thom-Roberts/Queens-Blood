@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class board : Node3D
 {
@@ -23,9 +22,13 @@ public partial class board : Node3D
       GD.Print("InputManager not found. This is a bug.");
       return;
     }
-    inputManager.Register("ui_select", OnSelect);
+    // inputManager.Register("ui_select", OnSelect);
     inputManager.Register("select", OnSelect);
     inputManager.Register("cancel", () => EmitSignal(SignalName.CancelSelection));
+    inputManager.Register("move_down", () => MoveCursor("down"));
+    inputManager.Register("move_up", () => MoveCursor("up"));
+    inputManager.Register("move_left", () => MoveCursor("left"));
+    inputManager.Register("move_right", () => MoveCursor("right"));
   }
 
     public void OnSelect()
@@ -36,18 +39,13 @@ public partial class board : Node3D
     EmitSignal(SignalName.SlotSelected, slots[selectedSlot], selectedSlot);
   }
 
-  public override void _Input(InputEvent @event)
+  private void MoveCursor(string direction)
   {
     if(!AcceptingInput)
       return;
-
-    MoveCursor(@event);
-  }
-
-  private void MoveCursor(InputEvent @event)
-  {
+    
     int newSlot = selectedSlot;
-    if(@event.IsActionPressed("move_down"))
+    if(direction == "down")
     {
       if(selectedSlot >= 10)
       {
@@ -55,7 +53,7 @@ public partial class board : Node3D
       }
       newSlot += 5;
     }
-    if(@event.IsActionPressed("move_up"))
+    if(direction == "up")
     {
       if(selectedSlot < 5)
       {
@@ -63,7 +61,7 @@ public partial class board : Node3D
       }
       newSlot -= 5;
     }
-    if(@event.IsActionPressed("move_left"))
+    if(direction == "left")
     {
       if(selectedSlot % 5 == 0)
       {
@@ -71,7 +69,7 @@ public partial class board : Node3D
       }
       newSlot -= 1;
     }
-    if(@event.IsActionPressed("move_right"))
+    if(direction == "right")
     {
       if(selectedSlot % 5 == 4)
       {
@@ -88,10 +86,17 @@ public partial class board : Node3D
       selectedSlot = newSlot;
     }
   }
+
   public void SetAcceptingInput(bool acceptingInput)
   {
-    GD.Print("Setting accepting input to: " + acceptingInput);
-    AcceptingInput = acceptingInput;
+    if(acceptingInput == true) // Prevent race condition
+    {
+      SetDeferred("AcceptingInput", true);
+    }
+    else
+    {
+      AcceptingInput = acceptingInput;
+    }
   }
 
   public void UpdateLightbulbCount(string[] cardIncreasePositions, int slotIndex)
