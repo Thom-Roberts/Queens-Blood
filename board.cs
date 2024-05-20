@@ -16,6 +16,24 @@ public partial class board : Node3D
     {
       slots[i - 1] = GetNode<slot>("Slots/Slot" + i.ToString());
     }
+
+    var inputManager = GetTree().Root.GetNode<InputManager>("Main/InputManager");
+    if(inputManager == null)
+    {
+      GD.Print("InputManager not found. This is a bug.");
+      return;
+    }
+    inputManager.Register("ui_select", OnSelect);
+    inputManager.Register("select", OnSelect);
+    inputManager.Register("cancel", () => EmitSignal(SignalName.CancelSelection));
+  }
+
+    public void OnSelect()
+  {
+    if(!AcceptingInput)
+      return;
+
+    EmitSignal(SignalName.SlotSelected, slots[selectedSlot], selectedSlot);
   }
 
   public override void _Input(InputEvent @event)
@@ -24,19 +42,6 @@ public partial class board : Node3D
       return;
 
     MoveCursor(@event);
-
-    if(@event.IsActionPressed("ui_select"))
-    {
-      EmitSignal(SignalName.SlotSelected, slots[selectedSlot], selectedSlot);
-    }
-    else if(@event.IsActionPressed("select"))
-    {
-      EmitSignal(SignalName.SlotSelected, slots[selectedSlot], selectedSlot);
-    }
-    else if(@event.IsActionPressed("cancel"))
-    {
-      EmitSignal(SignalName.CancelSelection);
-    }
   }
 
   private void MoveCursor(InputEvent @event)
@@ -97,7 +102,6 @@ public partial class board : Node3D
       int tilePosition = Utils.ComputeTilePositionForCardImage(position, slotIndex);
       if(tilePosition < 0 || tilePosition >= 15)
       {
-        GD.Print("Invalid tile position: " + tilePosition);
         continue;
       }
       slots[tilePosition].SetLightbulbCount(slots[tilePosition].lightbulbCount + 1);

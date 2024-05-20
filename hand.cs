@@ -12,6 +12,18 @@ public partial class hand : Node3D
   private bool AcceptingInput = true;
   private int ActiveCard = -1; // The raised card
 
+  public override void _Ready()
+  {
+    var inputManager = GetTree().Root.GetNode<InputManager>("Main/InputManager");
+    if(inputManager == null)
+    {
+      GD.Print("InputManager not found. This is a bug.");
+      return;
+    }
+    inputManager.Register("ui_select", OnSelect);
+    inputManager.Register("select", OnSelect);
+  }
+
   public override void _Input(InputEvent @event)
   {
     if(!AcceptingInput)
@@ -25,15 +37,16 @@ public partial class hand : Node3D
     {
       SetActiveCard(ActiveCard + cards.Count + 1);
     }
-    // TODO: Debug issue where select is triggering after pressing enter on board state
-    else if(@event.IsActionPressed("select"))
-    {
-      // Trigger select on card, board should now handles the input
-      EmitSignal(SignalName.CardSelected, cards[ActiveCard]);
-    }
   }
 
-  
+  // TODO: Debug issue where select is triggering after pressing enter on board state
+  public void OnSelect()
+  {
+    if(!AcceptingInput)
+      return;
+
+    EmitSignal(SignalName.CardSelected, cards[ActiveCard]);
+  }
 
   public void SetAcceptingInput(bool acceptingInput)
   {
