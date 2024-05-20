@@ -48,7 +48,7 @@ public partial class main : Node
   private void HandleSlotSelection(slot slot, int slotIndex)
   {
     GD.Print("Slot selected");
-    if(selectedCard.cardData.CardCost > slot.lightbulbCount || slot.occupied)
+    if(selectedCard.cardData.CardCost > slot.lightbulbCount || slot.occupiedCard != null)
     {
       GD.Print("Unable to play card in this slot. Not enough lightbulbs.");
       return;
@@ -58,8 +58,9 @@ public partial class main : Node
     
     GD.Print("Attempting to place card");
     selectedCard.GlobalPosition = slot.GetCardPosition();
-    slot.occupied = true;
+    slot.SetOccupiedCard(selectedCard);
     gameBoard.UpdateLightbulbCount(selectedCard.cardData.CostIncreaseTilesAsString, slotIndex);
+    gameBoard.RecalculateScores();
     playerHand.RemoveCard(selectedCard);
 
     // TOOD: Move to the CPU's turn

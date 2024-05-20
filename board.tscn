@@ -105,3 +105,35 @@ mesh = SubResource("PlaneMesh_sptf3")
 [node name="LongWall5" type="MeshInstance3D" parent="Dividers"]
 transform = Transform3D(-2.62268e-07, 4.37114e-08, -10, -7.15256e-07, 1, 4.37114e-07, 6, 1.19209e-07, -4.37114e-07, 0, -1, 0)
 mesh = SubResource("PlaneMesh_sptf3")
+
+[node name="ScoreLabels" type="Node" parent="."]
+
+[node name="Label1" type="Label3D" parent="ScoreLabels"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13, 0, -4)
+text = "15"
+font_size = 144
+
+[node name="Label2" type="Label3D" parent="ScoreLabels"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13, 0, 0)
+text = "15"
+font_size = 144
+
+[node name="Label3" type="Label3D" parent="ScoreLabels"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13, 0, 4)
+text = "15"
+font_size = 144
+
+[node name="Label4" type="Label3D" parent="ScoreLabels"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13, 0, -4)
+text = "15"
+font_size = 144
+
+[node name="Label5" type="Label3D" parent="ScoreLabels"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13, 0, 0)
+text = "15"
+font_size = 144
+
+[node name="Label6" type="Label3D" parent="ScoreLabels"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13, 0, 4)
+text = "15"
+font_size = 144

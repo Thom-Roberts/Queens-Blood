@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.cs" id="1_bi7vj"]
 [ext_resource type="PackedScene" uid="uid://cc5ialcqjq3w5" path="res://board.tscn" id="1_skl7r"]
 [ext_resource type="PackedScene" uid="uid://bd3ewrqt353sh" path="res://InputManager.tscn" id="4_6kixi"]
-[ext_resource type="PackedScene" uid="uid://4p2s5kxj0r22" path="res://hand.tscn" id="10_wqwu2"]
+[ext_resource type="PackedScene" path="res://hand.tscn" id="10_wqwu2"]
 
 [sub_resource type="Environment" id="Environment_bcvkj"]
 background_mode = 3

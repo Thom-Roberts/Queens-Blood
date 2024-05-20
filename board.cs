@@ -7,6 +7,7 @@ public partial class board : Node3D
   [Signal]
   public delegate void CancelSelectionEventHandler();
   public slot[] slots = new slot[15];
+  private Label3D[] scoreLabels = new Label3D[6];
   private bool AcceptingInput = false;
   private int selectedSlot = 0;
   public override void _Ready()
@@ -14,6 +15,12 @@ public partial class board : Node3D
     for (int i = 1; i <= 15; i++)
     {
       slots[i - 1] = GetNode<slot>("Slots/Slot" + i.ToString());
+    }
+
+    for (int i = 1; i <= 6; i++)
+    {
+      scoreLabels[i - 1] = GetNode<Label3D>("ScoreLabels/Label" + i.ToString());
+      scoreLabels[i - 1].Text = "0";
     }
 
     var inputManager = GetTree().Root.GetNode<InputManager>("Main/InputManager");
@@ -111,5 +118,47 @@ public partial class board : Node3D
       }
       slots[tilePosition].SetLightbulbCount(slots[tilePosition].lightbulbCount + 1);
     }
+  }
+
+  public void RecalculateScores()
+  {
+    // Top row score calculation
+    int localScore = 0;
+    for(int i = 0; i < 5; i++)
+    {
+      if(slots[i].occupiedCard == null)
+      {
+        continue;
+      }
+      
+      localScore += slots[i].occupiedCard.cardData.CardValue;
+    }
+    scoreLabels[0].Text = localScore.ToString();
+    
+    // Middle row score calculation
+    localScore = 0;
+    for(int i = 5; i < 10; i++)
+    {
+      if(slots[i].occupiedCard == null)
+      {
+        continue;
+      }
+      
+      localScore += slots[i].occupiedCard.cardData.CardValue;
+    }
+    scoreLabels[1].Text = localScore.ToString();
+
+    // Bottom row score calculation
+    localScore = 0;
+    for(int i = 10; i < 15; i++)
+    {
+      if(slots[i].occupiedCard == null)
+      {
+        continue;
+      }
+      
+      localScore += slots[i].occupiedCard.cardData.CardValue;
+    }
+    scoreLabels[2].Text = localScore.ToString();
   }
 }
