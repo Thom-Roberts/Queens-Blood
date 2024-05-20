@@ -41,7 +41,6 @@ public partial class hand : Node3D
     }
   }
 
-  // TODO: Debug issue where select is triggering after pressing enter on board state
   public void OnSelect()
   {
     if(!AcceptingInput)
@@ -82,5 +81,10 @@ public partial class hand : Node3D
     ActiveCard = nextIndex;
     // Raise the new card
     cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y + 1f, cards[ActiveCard].Position.Z - 1f);
+  }
+
+  public void RemoveCard(ThreeDCard card)
+  {
+    cards.Remove(card);
   }
 }

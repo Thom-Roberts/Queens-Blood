@@ -60,11 +60,13 @@ public partial class main : Node
     selectedCard.GlobalPosition = slot.GetCardPosition();
     slot.occupied = true;
     gameBoard.UpdateLightbulbCount(selectedCard.cardData.CostIncreaseTilesAsString, slotIndex);
-    
+    playerHand.RemoveCard(selectedCard);
+
     // TOOD: Move to the CPU's turn
     playerHand.SetAcceptingInput(true);
     gameBoard.SetAcceptingInput(false);
     GD.Print("Card placed");
+    playerHand.SetActiveCard(0); // Moves the card up
     selectedCard = null;
   }
 
