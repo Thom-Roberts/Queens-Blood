@@ -33,7 +33,7 @@ public partial class ThreeDCard : Node3D
       GD.PrintErr("CardData is null");
       return;
     }
-    squares.ColorTiles(cardData.CostIncreaseTiles);
+    squares.ColorTiles(cardData.CostIncreaseTilesAsString);
     cardNameLabel.Text = cardData.CardName;
     SetAmountOfPawns(cardData.CardCost);
     pointLabel.Text = cardData.CardValue.ToString();

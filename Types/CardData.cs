@@ -33,11 +33,11 @@ public partial class CardData : Resource
   [Export]
   public int CardValue { get; set; }
   [Export]
-  public int[] CostIncreaseTiles {get; set;}
+  public string[] CostIncreaseTilesAsString {get; set;}
   [Export]
   public CardEffect Effect {get; set;}
   [Export]
-  public int[] SpecialEffectTiles {get; set;}
+  public string[] SpecialEffectTilesAsString {get; set;}
   [Export]
   public CompressedTexture2D CardArt {get; set;}
 
@@ -48,13 +48,13 @@ public partial class CardData : Resource
   // creating and editing your resource via the inspector.
   public CardData() : this("", 0, 0, null, CardEffect.None, null) {}
 
-  public CardData(string cardName, int cardCost, int cardValue, int[] costIncreaseTiles, CardEffect effect, int[] specialEffectTiles)
+  public CardData(string cardName, int cardCost, int cardValue, string[] costIncreaseTilesAsString, CardEffect effect, string[] specialEffectTilesAsString)
   {
     CardName = cardName;
     CardCost = cardCost;
     CardValue = cardValue;
-    CostIncreaseTiles = costIncreaseTiles ?? System.Array.Empty<int>();
+    CostIncreaseTilesAsString = costIncreaseTilesAsString ?? System.Array.Empty<string>();
     Effect = effect;
-    SpecialEffectTiles = specialEffectTiles ?? System.Array.Empty<int>();
+    SpecialEffectTilesAsString = specialEffectTilesAsString ?? System.Array.Empty<string>();
   }
 }
