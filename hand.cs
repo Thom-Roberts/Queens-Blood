@@ -25,12 +25,15 @@ public partial class hand : Node3D
     {
       SetActiveCard(ActiveCard + cards.Count + 1);
     }
+    // TODO: Debug issue where select is triggering after pressing enter on board state
     else if(@event.IsActionPressed("select"))
     {
       // Trigger select on card, board should now handles the input
       EmitSignal(SignalName.CardSelected, cards[ActiveCard]);
     }
   }
+
+  
 
   public void SetAcceptingInput(bool acceptingInput)
   {

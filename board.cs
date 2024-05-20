@@ -85,6 +85,7 @@ public partial class board : Node3D
   }
   public void SetAcceptingInput(bool acceptingInput)
   {
+    GD.Print("Setting accepting input to: " + acceptingInput);
     AcceptingInput = acceptingInput;
   }
 

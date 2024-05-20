@@ -7,7 +7,8 @@ public partial class slot : Node3D
   public int currentModifier = 0;
   private lightbulb[] lightbulbs = new lightbulb[3];
   private Marker3D CardPostionMarker;
-  
+  public bool occupied = false;
+
   public override void _Ready()
   {
     lightbulbs[0] = GetNode<lightbulb>("Lightbulb");
@@ -63,5 +64,10 @@ public partial class slot : Node3D
   public Vector3 GetCardPosition()
   {
     return CardPostionMarker.GlobalPosition;
+  }
+
+  public void SetOccupied(bool isOccupied)
+  {
+    occupied = isOccupied;
   }
 }
