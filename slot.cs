@@ -7,7 +7,7 @@ public partial class slot : Node3D
   public int currentModifier = 0;
   private lightbulb[] lightbulbs = new lightbulb[3];
   private Marker3D CardPostionMarker;
-
+  
   public override void _Ready()
   {
     lightbulbs[0] = GetNode<lightbulb>("Lightbulb");
@@ -19,6 +19,7 @@ public partial class slot : Node3D
 
   public void SetLightbulbCount(int count)
   {
+    count = Mathf.Clamp(count, 1, 3);
     lightbulbCount = count;
 
     // Set visibility

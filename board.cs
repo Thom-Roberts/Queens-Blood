@@ -4,7 +4,9 @@ using System;
 public partial class board : Node3D
 {
   [Signal]
-  public delegate void SlotSelectedEventHandler(slot slot);
+  public delegate void SlotSelectedEventHandler(slot slot, int slotIndex);
+  [Signal]
+  public delegate void CancelSelectionEventHandler();
   public slot[] slots = new slot[15];
   private bool AcceptingInput = false;
   private int selectedSlot = 0;
@@ -25,13 +27,16 @@ public partial class board : Node3D
 
     if(@event.IsActionPressed("ui_select"))
     {
-      EmitSignal(SignalName.SlotSelected, slots[selectedSlot]);
+      EmitSignal(SignalName.SlotSelected, slots[selectedSlot], selectedSlot);
     }
     else if(@event.IsActionPressed("select"))
     {
-      EmitSignal(SignalName.SlotSelected, slots[selectedSlot]);
+      EmitSignal(SignalName.SlotSelected, slots[selectedSlot], selectedSlot);
     }
-
+    else if(@event.IsActionPressed("cancel"))
+    {
+      EmitSignal(SignalName.CancelSelection);
+    }
   }
 
   private void MoveCursor(InputEvent @event)
@@ -81,5 +86,20 @@ public partial class board : Node3D
   public void SetAcceptingInput(bool acceptingInput)
   {
     AcceptingInput = acceptingInput;
+  }
+
+  public void UpdateLightbulbCount(string[] cardIncreasePositions, int slotIndex)
+  {
+    foreach(string position in cardIncreasePositions)
+    {
+      // TODO: Don't update positions that already have cards
+      int tilePosition = Utils.ComputeTilePositionForCardImage(position, slotIndex);
+      if(tilePosition < 0 || tilePosition >= 15)
+      {
+        GD.Print("Invalid tile position: " + tilePosition);
+        continue;
+      }
+      slots[tilePosition].SetLightbulbCount(slots[tilePosition].lightbulbCount + 1);
+    }
   }
 }
