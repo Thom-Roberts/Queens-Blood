@@ -9,7 +9,7 @@ public partial class hand : Node3D
   [Export]
   public Array<ThreeDCard> cards = new Array<ThreeDCard>();
 
-  public bool AcceptingInput = true;
+  public bool AcceptingInput = false;
   private int ActiveCard = -1; // The raised card
 
   public override void _Ready()
@@ -54,6 +54,7 @@ public partial class hand : Node3D
     if(acceptingInput == true) // Prevent race condition
     {
       SetDeferred("AcceptingInput", true);
+      SetActiveCard(0);
     }
     else
     {
@@ -64,9 +65,17 @@ public partial class hand : Node3D
   public void AddCard(ThreeDCard card)
   {
     AddChild(card);
-    // Move card to some offset based on its index
-    card.Position = new Vector3(cards.Count * 3, 0, 0);
     cards.Add(card);
+    // Move card to some offset based on its index
+    UpdateCardPositions();
+  }
+
+  private void UpdateCardPositions()
+  {
+    for(int i = 0; i < cards.Count; i++)
+    {
+      cards[i].Position = new Vector3(i * 3, 0, 0);
+    }
   }
 
   public void SetActiveCard(int index)
@@ -79,12 +88,16 @@ public partial class hand : Node3D
       cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y - 1f, cards[ActiveCard].Position.Z + 1f);
     }
     ActiveCard = nextIndex;
+    GD.Print("Raising ", cards[ActiveCard].cardData.CardName);
+    GD.Print(cards[ActiveCard].Position);
     // Raise the new card
     cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y + 1f, cards[ActiveCard].Position.Z - 1f);
+    GD.Print(cards[ActiveCard].Position);
   }
 
   public void RemoveCard(ThreeDCard card)
   {
     cards.Remove(card);
+    UpdateCardPositions();
   }
 }
