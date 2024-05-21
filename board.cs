@@ -112,10 +112,12 @@ public partial class board : Node3D
     {
       // TODO: Don't update positions that already have cards
       int tilePosition = Utils.ComputeTilePositionForCardImage(position, slotIndex);
-      if(tilePosition < 0 || tilePosition >= 15)
-      {
+      if(slots[tilePosition].occupiedCard != null) // Don't increase lightbulb count if there is already a card there
         continue;
-      }
+      
+      if(tilePosition < 0 || tilePosition >= 15)  
+        continue;
+    
       slots[tilePosition].SetLightbulbCount(slots[tilePosition].lightbulbCount + 1);
     }
   }
