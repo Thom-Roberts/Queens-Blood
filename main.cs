@@ -32,12 +32,11 @@ public partial class main : Node
     // Draw 5 cards randomly from the deck
     for(int i = 0; i < 5; i++)
     {
-      var randomIndex = GD.RandRange(0, deckCards.Count);
-      var cardData = deckCards[randomIndex];
+      var randomCardData = deckCards.PickRandom();
       var card = cardScene.Instantiate<ThreeDCard>();
-      card.cardData = cardData; 
+      card.cardData = randomCardData; 
       playerHand.AddCard(card);
-      deckCards.RemoveAt(randomIndex);
+      deckCards.Remove(randomCardData);
     }
 
     // var securityOfficerCard = cardScene.Instantiate<ThreeDCard>();

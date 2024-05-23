@@ -54,7 +54,7 @@ public partial class hand : Node3D
     if(acceptingInput == true) // Prevent race condition
     {
       SetDeferred("AcceptingInput", true);
-      SetActiveCard(0);
+      SetActiveCard(0, skipLowering: true);
     }
     else
     {
@@ -78,12 +78,12 @@ public partial class hand : Node3D
     }
   }
 
-  public void SetActiveCard(int index)
+  public void SetActiveCard(int index, bool skipLowering = false)
   {
     int nextIndex = index % cards.Count;
 
     // Lower the old card, except if we're just starting
-    if(ActiveCard != -1)
+    if(ActiveCard != -1 && !skipLowering)
     {
       cards[ActiveCard].Position = new Vector3(cards[ActiveCard].Position.X, cards[ActiveCard].Position.Y - 1f, cards[ActiveCard].Position.Z + 1f);
     }
